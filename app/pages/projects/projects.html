@@ -1,0 +1,15 @@
+<ion-navbar *navbar hideBackButton>
+  <button menuToggle (click)="addProject()">
+    <ion-icon name="add-circle"></ion-icon>
+  </button>
+  <ion-title>My Projects</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of projectList">
+      <ion-icon name="logo-angular"> {{item}}</ion-icon>
+    </button>
+    <div [hidden]="!isEmpty" class="empty"> You have no projects created.</div>
+  </ion-list>
+</ion-content>
