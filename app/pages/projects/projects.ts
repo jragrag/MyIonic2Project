@@ -10,6 +10,7 @@ export class ProjectsPage {
   isEmpty = true;
   constructor(public nav: NavController) {
     this.projects.clear();
+    this.isEmpty = true;
   }
 
   addProject(){
@@ -38,7 +39,7 @@ export class ProjectsPage {
               this.isEmpty = false;
             }
             else{
-              this.promptDuplicateProject();
+              setTimeout(() => this.promptDuplicateProject(), 250);
             }
           }
         }
@@ -50,8 +51,9 @@ export class ProjectsPage {
    promptDuplicateProject(){
       let duplicatePrompt = Alert.create({
       title: "Duplicate Project Name",
-      message: "Project Name already exist."
+      message: "Project Name already exist.",
+      buttons: ["OK"]
     });
-    this.nav.present(duplicatePrompt).then(test => duplicatePrompt.dismiss());
+    this.nav.present(duplicatePrompt);
    }
 }
